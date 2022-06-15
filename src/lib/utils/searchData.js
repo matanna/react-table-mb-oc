@@ -9,7 +9,9 @@ export const searchData = (elements, search) => {
   const regex = new RegExp(search);
 
   // Filter values by regex
-  return values.reduce((acc, e, i) => {
-    return e.search(regex) === -1 ? acc : [...acc, i];
-  }, []);
+  return values
+    .reduce((acc, e, i) => {
+      return e.search(regex) === -1 ? acc : [...acc, i];
+    }, [])
+    .map((e) => elements[e]);
 };

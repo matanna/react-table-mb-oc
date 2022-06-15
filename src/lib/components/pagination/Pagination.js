@@ -2,36 +2,40 @@ import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import Style from "./Pagination.module.scss";
 import { TableContext } from "../../context/TableContext";
+import { items, nextPage, prevPage } from "../../utils/paginateData";
 
 const Pagination = () => {
   const { elements, setElements } = useContext(TableContext);
-  const total = elements.initialElements.length;
-  const first = elements.nbElements * (elements.page - 1) + 1;
-  const last = elements.nbElements * elements.page;
+  const { first, last, total } = items(
+    elements.sortSearchElements,
+    elements.page,
+    elements.nbElements
+  );
 
   const handleClick = (e) => {
     switch (e.target.dataset.direction) {
       case "prev":
         setElements({
           ...elements,
-          elementsDisplayed: [...elements.initialElements].splice(
-            (elements.page - 2) * elements.nbElements,
+          elementsDisplayed: prevPage(
+            elements.sortSearchElements,
+            elements.page,
             elements.nbElements
           ),
-          page: elements.page === 1 ? 1 : elements.page - 1,
+          page: elements.page >= 1 && elements.page - 1,
         });
         break;
       case "next":
         setElements({
           ...elements,
-          elementsDisplayed: [...elements.initialElements].splice(
-            elements.page * elements.nbElements,
+          elementsDisplayed: nextPage(
+            elements.sortSearchElements,
+            elements.page,
             elements.nbElements
           ),
           page:
-            elements.page === Math.ceil(total / elements.nbElements)
-              ? elements.page
-              : elements.page + 1,
+            elements.page < Math.ceil(total / elements.nbElements) &&
+            elements.page + 1,
         });
         break;
       default:

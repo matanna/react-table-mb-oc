@@ -8,12 +8,9 @@ const Search = (props) => {
   const { elements, setElements } = useContext(TableContext);
 
   const handleChange = (e) => {
-    const values = searchData(elements.initialElements, e.target.value);
-    console.log(values);
     setElements({
       ...elements,
-      elementsDisplayed: values.map((e) => elements.initialElements[e]),
-      search: e.target.value,
+      sortSearchElements: searchData(elements.initialElements, e.target.value),
     });
   };
 

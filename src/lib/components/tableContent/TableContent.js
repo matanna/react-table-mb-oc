@@ -10,8 +10,9 @@ import {
   upArrowActive,
 } from "../../assets";
 import { sortData } from "../../utils/sortData";
+import { isEqual } from "lodash";
 
-const TableContent = ({ children }) => {
+const TableContent = () => {
   // Sort columns in the order chose by the user
   const { columns, elements, setElements } = useContext(TableContext);
   const sortColumns = columns.sort((a, b) => a.order - b.order);
@@ -26,21 +27,31 @@ const TableContent = ({ children }) => {
    * @param e - the event object
    */
   const handleClick = (e) => {
-    const sortArray = sortData(e, elements.initialElements, columns);
+    const sortArray = sortData(e, elements.sortSearchElements, columns);
     setElements({
       ...elements,
-      initialElements: sortArray,
-      elementsDisplayed: [...sortArray].splice(
-        (elements.page - 1) * elements.nbElements,
-        elements.nbElements
-      ),
+      sortSearchElements: sortArray,
     });
-    setSortActiveIcon({
+
+    const sortIcon = {
       dataName: e.target.parentNode.dataset.name,
       direction: e.target.dataset.sort,
-    });
+    };
+
+    if (isEqual(sortIcon, sortActiveIcon)) {
+      setSortActiveIcon({ dataName: "", direction: "" });
+      setElements({
+        ...elements,
+        sortSearchElements: elements.initialElements,
+      });
+    } else {
+      setSortActiveIcon({
+        dataName: e.target.parentNode.dataset.name,
+        direction: e.target.dataset.sort,
+      });
+    }
   };
-  console.log(elements);
+
   return (
     <table role="grid" className={Style.table}>
       <thead className={Style.thead}>
