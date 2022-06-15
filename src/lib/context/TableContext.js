@@ -2,11 +2,13 @@ import { createContext, useState } from "react";
 
 export const TableContext = createContext();
 
-export const TableProvider = ({ columns, arrayOfElements, children }) => {
+export const TableProvider = ({ columns, initialElements, children }) => {
   const [elements, setElements] = useState({
-    initialArray: arrayOfElements,
-    elements: arrayOfElements,
-    nbElements: 10,
+    initialElements: initialElements,
+    sortOrSearchElements: initialElements,
+    elementsDisplayed: initialElements,
+    search: "",
+    nbElements: 3,
     page: 1,
   });
 

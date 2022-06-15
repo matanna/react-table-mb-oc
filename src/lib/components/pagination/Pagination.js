@@ -5,7 +5,7 @@ import { TableContext } from "../../context/TableContext";
 
 const Pagination = () => {
   const { elements, setElements } = useContext(TableContext);
-  const total = elements.initialArray.length;
+  const total = elements.initialElements.length;
   const first = elements.nbElements * (elements.page - 1) + 1;
   const last = elements.nbElements * elements.page;
 
@@ -14,40 +14,47 @@ const Pagination = () => {
       case "prev":
         setElements({
           ...elements,
-          /*elements: , */
+          elementsDisplayed: [...elements.initialElements].splice(
+            (elements.page - 2) * elements.nbElements,
+            elements.nbElements
+          ),
           page: elements.page === 1 ? 1 : elements.page - 1,
         });
-        console.log(elements);
         break;
       case "next":
         setElements({
           ...elements,
-          /*elements: ,*/
+          elementsDisplayed: [...elements.initialElements].splice(
+            elements.page * elements.nbElements,
+            elements.nbElements
+          ),
           page:
             elements.page === Math.ceil(total / elements.nbElements)
               ? elements.page
               : elements.page + 1,
         });
-        console.log(elements);
         break;
       default:
         return;
     }
   };
-
   return (
-    <div>
+    <div className={Style.container}>
       <p>
         Showing {first} to {total < last ? total : last} of {total}
       </p>
       <div>
-        <button type="button" data-direction="prev" onClick={handleClick}>
-          Previous
-        </button>
+        {elements.page === 1 ? null : (
+          <button type="button" data-direction="prev" onClick={handleClick}>
+            Previous
+          </button>
+        )}
         <span className={Style.page}>{elements.page}</span>
-        <button type="button" data-direction="next" onClick={handleClick}>
-          Next
-        </button>
+        {last >= total ? null : (
+          <button type="button" data-direction="next" onClick={handleClick}>
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

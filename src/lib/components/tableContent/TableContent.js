@@ -26,16 +26,21 @@ const TableContent = ({ children }) => {
    * @param e - the event object
    */
   const handleClick = (e) => {
+    const sortArray = sortData(e, elements.initialElements, columns);
     setElements({
       ...elements,
-      elements: sortData(e, elements.elements, columns),
+      initialElements: sortArray,
+      elementsDisplayed: [...sortArray].splice(
+        (elements.page - 1) * elements.nbElements,
+        elements.nbElements
+      ),
     });
     setSortActiveIcon({
       dataName: e.target.parentNode.dataset.name,
       direction: e.target.dataset.sort,
     });
   };
-
+  console.log(elements);
   return (
     <table role="grid" className={Style.table}>
       <thead className={Style.thead}>
@@ -74,7 +79,7 @@ const TableContent = ({ children }) => {
         </tr>
       </thead>
       <tbody>
-        {elements.elements.map((e, i) => (
+        {elements.elementsDisplayed.map((e, i) => (
           <Row key={e.id ? e.id : `element-${i}`} element={e} />
         ))}
       </tbody>

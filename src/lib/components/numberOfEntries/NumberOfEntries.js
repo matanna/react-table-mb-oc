@@ -14,7 +14,7 @@ const NumberOfEntries = () => {
   useEffect(() => {
     setElements({
       ...elements,
-      elements: [...elements.initialArray].splice(0, 2),
+      elementsDisplayed: [...elements.initialElements].splice(0, 3),
     });
   }, []);
 
@@ -24,13 +24,16 @@ const NumberOfEntries = () => {
    * @param e - the event object
    */
   const handleChange = (e) => {
+    const values = [...elements.initialElements].splice(
+      (elements.page - 1) * parseInt(e.target.value),
+      e.target.value
+    );
     setElements({
       ...elements,
-      elements: [...elements.initialArray].splice(
-        (elements.page - 1) * parseInt(e.target.value),
-        e.target.value
-      ),
+      elementsDisplayed:
+        values.length === 0 ? [...elements.initialElements] : values,
       nbElements: parseInt(e.target.value),
+      page: 1,
     });
   };
 
@@ -38,7 +41,7 @@ const NumberOfEntries = () => {
     <div>
       <span>Show </span>
       <select name="numberDisplayed" onChange={handleChange}>
-        <option value="2">2</option>
+        <option value="3">3</option>
         <option value="10">10</option>
         <option value="25">25</option>
         <option value="50">50</option>

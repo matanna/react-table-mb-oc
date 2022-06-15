@@ -9,9 +9,9 @@ import {
 } from "./components";
 import { TableProvider } from "./context/TableContext";
 
-const App = ({ arrayOfElements, columns }) => {
+const App = ({ elements, columns }) => {
   return (
-    <TableProvider columns={columns} arrayOfElements={arrayOfElements}>
+    <TableProvider columns={columns} initialElements={elements}>
       <div>
         <div className={Style.header}>
           <NumberOfEntries />

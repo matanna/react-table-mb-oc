@@ -6,6 +6,6 @@ import { columns, employees } from "./mocks/mocks";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Table arrayOfElements={employees} columns={columns} />
+    <Table elements={employees} columns={columns} />
   </React.StrictMode>
 );
