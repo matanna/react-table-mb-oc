@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard").default;
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
 
 Object.defineProperty(exports, "__esModule", {
@@ -11,7 +13,7 @@ var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
-var _react = require("react");
+var _react = _interopRequireWildcard(require("react"));
 
 var _paginateData = require("../utils/paginateData");
 
@@ -57,7 +59,7 @@ var TableProvider = function TableProvider(_ref) {
       elementsDisplayed: (0, _paginateData.currentPage)(elements.sortSearchElements, elements.page, elements.nbElements)
     }));
   }, [elements.sortSearchElements, elements.nbElements, elements.page]);
-  return /*#__PURE__*/React.createElement(TableContext.Provider, {
+  return /*#__PURE__*/_react.default.createElement(TableContext.Provider, {
     value: {
       columns: columns,
       elements: elements,

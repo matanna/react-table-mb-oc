@@ -2,6 +2,7 @@
  * This file create a context for make accessible the state everywhere in the application
  * and dispatch it with a component Provider
  */
+import React from "react";
 import { createContext, useState } from "react";
 import { currentPage } from "../utils/paginateData";
 import { useEffect } from "react";

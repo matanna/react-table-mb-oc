@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
+import React from "react";
 import Style from "./App.module.scss";
 import {
   NumberOfEntries,
   Pagination,
   TableContent,
-  Row,
   Search,
 } from "./components";
 import { TableProvider } from "./context/TableContext";
