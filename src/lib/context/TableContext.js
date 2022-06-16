@@ -4,7 +4,12 @@ import { useEffect } from "react";
 
 export const TableContext = createContext();
 
-export const TableProvider = ({ columns, initialElements, children }) => {
+export const TableProvider = ({
+  columns,
+  initialElements,
+  style,
+  children,
+}) => {
   const [elements, setElements] = useState({
     initialElements: initialElements,
     sortSearchElements: initialElements,
@@ -12,7 +17,7 @@ export const TableProvider = ({ columns, initialElements, children }) => {
     nbElements: 3,
     page: 1,
   });
-
+  console.log(style);
   useEffect(() => {
     setElements({
       ...elements,
@@ -25,7 +30,7 @@ export const TableProvider = ({ columns, initialElements, children }) => {
   }, [elements.sortSearchElements, elements.nbElements, elements.page]);
 
   return (
-    <TableContext.Provider value={{ columns, elements, setElements }}>
+    <TableContext.Provider value={{ columns, elements, setElements, style }}>
       {children}
     </TableContext.Provider>
   );

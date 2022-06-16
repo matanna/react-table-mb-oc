@@ -9,10 +9,10 @@ import {
 } from "./components";
 import { TableProvider } from "./context/TableContext";
 
-const App = ({ elements, columns }) => {
+const App = ({ elements, columns, style }) => {
   return (
-    <TableProvider columns={columns} initialElements={elements}>
-      <div>
+    <TableProvider columns={columns} initialElements={elements} style={style}>
+      <div className={Style.app}>
         <div className={Style.header}>
           <NumberOfEntries />
           <Search />

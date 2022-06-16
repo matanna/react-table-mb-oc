@@ -5,12 +5,23 @@ import { TableContext } from "../../context/TableContext";
 import { items, nextPage, prevPage } from "../../utils/paginateData";
 
 const Pagination = () => {
-  const { elements, setElements } = useContext(TableContext);
+  const { elements, setElements, style } = useContext(TableContext);
   const { first, last, total } = items(
     elements.sortSearchElements,
     elements.page,
     elements.nbElements
   );
+
+  const buildCss = () => {
+    return {
+      ...(style.subBorder
+        ? { borderColor: style.subBorder }
+        : { borderColor: "#ddd" }),
+      ...(style.active
+        ? { background: style.active }
+        : { background: "#f4f4ff" }),
+    };
+  };
 
   const handleClick = (e) => {
     switch (e.target.dataset.direction) {
@@ -48,14 +59,32 @@ const Pagination = () => {
         Showing {first} to {total < last ? total : last} of {total}
       </p>
       <div>
-        {elements.page === 1 ? null : (
-          <button type="button" data-direction="prev" onClick={handleClick}>
+        {elements.page === 1 ? (
+          <button type="button" className={Style.disabled}>
+            Previous
+          </button>
+        ) : (
+          <button
+            type="button"
+            data-direction="prev"
+            onClick={handleClick}
+            style={buildCss()}
+          >
             Previous
           </button>
         )}
         <span className={Style.page}>{elements.page}</span>
-        {last >= total ? null : (
-          <button type="button" data-direction="next" onClick={handleClick}>
+        {last >= total ? (
+          <button type="button" className={Style.disabled}>
+            Next
+          </button>
+        ) : (
+          <button
+            type="button"
+            data-direction="next"
+            onClick={handleClick}
+            style={buildCss()}
+          >
             Next
           </button>
         )}

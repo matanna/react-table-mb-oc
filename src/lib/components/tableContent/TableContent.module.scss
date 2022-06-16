@@ -1,16 +1,39 @@
 .table {
   width: 100%;
-}
+  border-collapse: collapse;
 
-.thead {
-  padding: 1em 0;
+  thead {
+    border-bottom: 2px solid black;
 
-  .titleContent {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 1em 0;
-    font-weight: bold;
+    .titleContent {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.8em 0;
+      font-weight: 500;
+    }
+  }
+
+  tbody {
+    border-bottom: 2px solid black;
+    font-weight: 300;
+
+    tr {
+      border-bottom-width: 2px;
+      border-bottom-style: solid;
+
+      &:last-child {
+        border: none;
+      }
+
+      td {
+        padding: 0.8em 0.3em;
+
+        &:first-child {
+          font-weight: 400;
+        }
+      }
+    }
   }
 }
 

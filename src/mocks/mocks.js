@@ -122,3 +122,11 @@ export const columns = [
   { data: "zipCode", title: "Zip Code", order: 9, typeData: "number" },
   { data: "department", title: "Department", order: 4, typeData: "string" },
 ];
+
+export const style = {
+  border: "#06ad3d",
+  subBorder: "#30655e",
+  bgOddRow: "#61f0e4",
+  bgEvenRow: "#f4f4ff",
+  active: "#99AAbb",
+};

@@ -9,7 +9,18 @@ import { TableContext } from "../../context/TableContext";
  * @returns A select element with the options of 2, 10, 25, 50, and 100.
  */
 const NumberOfEntries = () => {
-  const { elements, setElements } = useContext(TableContext);
+  const { elements, setElements, style } = useContext(TableContext);
+
+  const buildCss = () => {
+    return {
+      ...(style.subBorder
+        ? { borderColor: style.subBorder }
+        : { borderColor: "#ddd" }),
+      ...(style.active
+        ? { background: style.active }
+        : { background: "#f4f4ff" }),
+    };
+  };
 
   const handleChange = (e) => {
     setElements({
@@ -20,9 +31,9 @@ const NumberOfEntries = () => {
   };
 
   return (
-    <div>
-      <span>Show </span>
-      <select name="numberDisplayed" onChange={handleChange}>
+    <div className={Style.container}>
+      <span>Show</span>
+      <select name="numberDisplayed" onChange={handleChange} style={buildCss()}>
         <option value="3">3</option>
         <option value="5">5</option>
         <option value="10">10</option>
@@ -30,7 +41,7 @@ const NumberOfEntries = () => {
         <option value="50">50</option>
         <option value="100">100</option>
       </select>
-      <span> entries</span>
+      <span>entries</span>
     </div>
   );
 };

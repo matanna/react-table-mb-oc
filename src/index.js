@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Table } from "./lib";
-import { columns, employees } from "./mocks/mocks";
+import { style, columns, employees } from "./mocks/mocks";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Table elements={employees} columns={columns} />
+    <Table elements={employees} columns={columns} style={style} />
   </React.StrictMode>
 );

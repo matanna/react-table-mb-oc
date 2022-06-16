@@ -5,7 +5,18 @@ import { TableContext } from "../../context/TableContext";
 import { searchData } from "../../utils/searchData";
 
 const Search = (props) => {
-  const { elements, setElements } = useContext(TableContext);
+  const { elements, setElements, style } = useContext(TableContext);
+
+  const buildCss = () => {
+    return {
+      ...(style.subBorder
+        ? { borderColor: style.subBorder }
+        : { borderColor: "#ddd" }),
+      ...(style.active
+        ? { background: style.active }
+        : { background: "#f4f4ff" }),
+    };
+  };
 
   const handleChange = (e) => {
     setElements({
@@ -15,9 +26,14 @@ const Search = (props) => {
   };
 
   return (
-    <div>
-      <label htmlFor="search">Search: </label>
-      <input type="search" id="search" onChange={handleChange} />
+    <div className={Style.container}>
+      <label htmlFor="search">Search :</label>
+      <input
+        type="search"
+        id="search"
+        onChange={handleChange}
+        style={buildCss()}
+      />
     </div>
   );
 };

@@ -14,7 +14,7 @@ import { isEqual } from "lodash";
 
 const TableContent = () => {
   // Sort columns in the order chose by the user
-  const { columns, elements, setElements } = useContext(TableContext);
+  const { columns, elements, setElements, style } = useContext(TableContext);
   const sortColumns = columns.sort((a, b) => a.order - b.order);
 
   const [sortActiveIcon, setSortActiveIcon] = useState({
@@ -54,7 +54,7 @@ const TableContent = () => {
 
   return (
     <table role="grid" className={Style.table}>
-      <thead className={Style.thead}>
+      <thead style={style.border ? { borderColor: style.border } : {}}>
         <tr role="row">
           {sortColumns.map((e) => (
             <th key={e.data}>
@@ -89,9 +89,13 @@ const TableContent = () => {
           ))}
         </tr>
       </thead>
-      <tbody>
+      <tbody style={style.border ? { borderColor: style.border } : {}}>
         {elements.elementsDisplayed.map((e, i) => (
-          <Row key={e.id ? e.id : `element-${i}`} element={e} />
+          <Row
+            key={e.id ? e.id : `element-${i}`}
+            element={e}
+            oddEven={i % 2 === 0 ? "even" : "odd"}
+          />
         ))}
       </tbody>
     </table>
