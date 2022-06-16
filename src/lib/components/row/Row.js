@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { columns } from "../../../mocks/mocks";
 import { TableContext } from "../../context/TableContext";
 
 /**
@@ -8,7 +7,7 @@ import { TableContext } from "../../context/TableContext";
  * @returns A table row with the data from the element object.
  */
 const Row = ({ element, oddEven }) => {
-  const { style } = useContext(TableContext);
+  const { columns, style } = useContext(TableContext);
   const [bgRow, setBgRow] = useState({
     odd: "",
     even: "",

@@ -15,8 +15,6 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _mocks = require("../../../mocks/mocks");
-
 var _TableContext = require("../../context/TableContext");
 
 /**
@@ -28,6 +26,7 @@ var Row = function Row(_ref) {
       oddEven = _ref.oddEven;
 
   var _useContext = (0, _react.useContext)(_TableContext.TableContext),
+      columns = _useContext.columns,
       style = _useContext.style;
 
   var _useState = (0, _react.useState)({
@@ -91,7 +90,7 @@ var Row = function Row(_ref) {
     style: buildCss(),
     onMouseEnter: handleHover,
     onMouseLeave: handleLeave
-  }, _mocks.columns.map(function (e, i) {
+  }, columns.map(function (e, i) {
     return /*#__PURE__*/_react.default.createElement("td", {
       key: "columns-".concat(i)
     }, element[e.data]);
