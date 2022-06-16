@@ -1,16 +1,19 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import Style from "./NumberOfEntries.module.scss";
 import { TableContext } from "../../context/TableContext";
 
 /**
  * It takes the initial array, and splices it into a new array, starting at the index of the first element of the current
  * page, and ending at the index of the last element of the current page
- * @returns A select element with the options of 2, 10, 25, 50, and 100.
+ * @returns A select element with the options of 3, 5, 10, 25, 50, and 100.
  */
 const NumberOfEntries = () => {
   const { elements, setElements, style } = useContext(TableContext);
 
+  /**
+   * Function for build css style dynamically in terms of colors are in context style object
+   * @returns {{borderColor: (*|string), background: (*|string)}}
+   */
   const buildCss = () => {
     return {
       ...(style.subBorder
@@ -45,7 +48,5 @@ const NumberOfEntries = () => {
     </div>
   );
 };
-
-NumberOfEntries.propTypes = {};
 
 export default NumberOfEntries;

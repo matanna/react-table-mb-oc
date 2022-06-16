@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Style from "./Row.module.scss";
 import { columns } from "../../../mocks/mocks";
 import { TableContext } from "../../context/TableContext";
 
+/**
+ * It renders a table row of data
+ * @returns A table row with the data from the element object.
+ */
 const Row = ({ element, oddEven }) => {
   const { style } = useContext(TableContext);
   const [bgRow, setBgRow] = useState({
@@ -11,6 +14,7 @@ const Row = ({ element, oddEven }) => {
     even: "",
   });
 
+  // If context style object exist, then apply its style
   useEffect(() => {
     setBgRow({
       odd: style.bgOddRow ? style.bgOddRow : "#f9f9f9",
@@ -18,12 +22,14 @@ const Row = ({ element, oddEven }) => {
     });
   }, []);
 
+  // On mouse over
   const handleHover = (e) => {
     return style.active
       ? (e.target.parentNode.style.background = style.active)
       : (e.target.parentNode.style.background = "#f4f4ff");
   };
 
+  // On mouse leave
   const handleLeave = (e) => {
     if (oddEven === "odd") {
       return (e.target.parentNode.style.background = bgRow.odd);
@@ -33,6 +39,10 @@ const Row = ({ element, oddEven }) => {
     }
   };
 
+  /**
+   * Function for build css style dynamically in terms of colors are in context style object
+   * @returns {{borderColor: (*|string), background: (*|string)}}
+   */
   const buildCss = () => {
     const subBorder = style.subBorder
       ? { borderColor: style.subBorder }
@@ -65,6 +75,9 @@ const Row = ({ element, oddEven }) => {
   );
 };
 
-Row.propTypes = {};
+Row.propTypes = {
+  element: PropTypes.object.isRequired,
+  oddEven: PropTypes.oneOf(["odd", "even"]).isRequired,
+};
 
 export default Row;

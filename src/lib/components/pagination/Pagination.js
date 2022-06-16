@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import Style from "./Pagination.module.scss";
 import { TableContext } from "../../context/TableContext";
 import { items, nextPage, prevPage } from "../../utils/paginateData";
 
+/**
+ * It renders a pagination component that displays the current page, the total number of elements, and the number of
+ * elements displayed on the current page
+ * @returns A function that returns a div with a paragraph and a div with buttons.
+ */
 const Pagination = () => {
   const { elements, setElements, style } = useContext(TableContext);
   const { first, last, total } = items(
@@ -12,6 +16,10 @@ const Pagination = () => {
     elements.nbElements
   );
 
+  /**
+   * Function for build css style dynamically in terms of colors are in context style object
+   * @returns {{borderColor: (*|string), background: (*|string)}}
+   */
   const buildCss = () => {
     return {
       ...(style.subBorder
@@ -23,6 +31,7 @@ const Pagination = () => {
     };
   };
 
+  // Display the next or prev page when click
   const handleClick = (e) => {
     switch (e.target.dataset.direction) {
       case "prev":
@@ -92,7 +101,5 @@ const Pagination = () => {
     </div>
   );
 };
-
-Pagination.propTypes = {};
 
 export default Pagination;

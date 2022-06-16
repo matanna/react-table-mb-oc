@@ -1,12 +1,19 @@
 import React, { useContext } from "react";
-import PropTypes from "prop-types";
 import Style from "./Search.module.scss";
 import { TableContext } from "../../context/TableContext";
 import { searchData } from "../../utils/searchData";
 
-const Search = (props) => {
+/**
+ * It's a function that returns a div that contains a label and an input
+ * @returns A React component that renders a search bar.
+ */
+const Search = () => {
   const { elements, setElements, style } = useContext(TableContext);
 
+  /**
+   * Function for build css style dynamically in terms of colors are in context style object
+   * @returns {{borderColor: (*|string), background: (*|string)}}
+   */
   const buildCss = () => {
     return {
       ...(style.subBorder
@@ -37,7 +44,5 @@ const Search = (props) => {
     </div>
   );
 };
-
-Search.propTypes = {};
 
 export default Search;

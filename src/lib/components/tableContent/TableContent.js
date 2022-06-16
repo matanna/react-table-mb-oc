@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import PropTypes from "prop-types";
 import Style from "./TableContent.module.scss";
 import { TableContext } from "../../context/TableContext";
 import { Row } from "../index";
@@ -12,32 +11,32 @@ import {
 import { sortData } from "../../utils/sortData";
 import { isEqual } from "lodash";
 
+/**
+ * It renders the table's content, and it sorts the data when the user clicks on the sort buttons
+ * @returns A table with the columns and rows that the user has chosen.
+ */
 const TableContent = () => {
   // Sort columns in the order chose by the user
   const { columns, elements, setElements, style } = useContext(TableContext);
   const sortColumns = columns.sort((a, b) => a.order - b.order);
 
+  // State for highlighted the good sort icon which is active
   const [sortActiveIcon, setSortActiveIcon] = useState({
     dataName: "",
     direction: "",
   });
 
   /**
-   * It takes the event, the data, and the columns as arguments, and then it sets the elements to the sorted data
+   * It takes the event, the array of elements to sort, and the columns to sort by, and returns a sorted array of elements
    * @param e - the event object
    */
   const handleClick = (e) => {
-    const sortArray = sortData(e, elements.sortSearchElements, columns);
-    setElements({
-      ...elements,
-      sortSearchElements: sortArray,
-    });
-
+    // Create sortIcon object for check if the icon is already active (sort is already active)
     const sortIcon = {
       dataName: e.target.parentNode.dataset.name,
       direction: e.target.dataset.sort,
     };
-
+    // If is equal, disable sort, if not, active sort
     if (isEqual(sortIcon, sortActiveIcon)) {
       setSortActiveIcon({ dataName: "", direction: "" });
       setElements({
@@ -45,6 +44,11 @@ const TableContent = () => {
         sortSearchElements: elements.initialElements,
       });
     } else {
+      const sortArray = sortData(e, elements.sortSearchElements, columns);
+      setElements({
+        ...elements,
+        sortSearchElements: sortArray,
+      });
       setSortActiveIcon({
         dataName: e.target.parentNode.dataset.name,
         direction: e.target.dataset.sort,
@@ -101,7 +105,5 @@ const TableContent = () => {
     </table>
   );
 };
-
-TableContent.propTypes = {};
 
 export default TableContent;
