@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { TableContext } from "../../context/TableContext";
+import { formatDate } from "../../utils/formatDate";
 
 /**
  * It renders a table row of data
@@ -68,7 +69,11 @@ const Row = ({ element, oddEven }) => {
       onMouseLeave={handleLeave}
     >
       {columns.map((e, i) => (
-        <td key={`columns-${i}`}>{element[e.data]}</td>
+        <td key={`columns-${i}`}>
+          {e.typeData === "date"
+            ? formatDate(element[e.data])
+            : element[e.data]}
+        </td>
       ))}
     </tr>
   );

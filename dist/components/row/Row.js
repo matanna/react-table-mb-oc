@@ -17,6 +17,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _TableContext = require("../../context/TableContext");
 
+var _formatDate = require("../../utils/formatDate");
+
 /**
  * It renders a table row of data
  * @returns A table row with the data from the element object.
@@ -93,7 +95,7 @@ var Row = function Row(_ref) {
   }, columns.map(function (e, i) {
     return /*#__PURE__*/_react.default.createElement("td", {
       key: "columns-".concat(i)
-    }, element[e.data]);
+    }, e.typeData === "date" ? (0, _formatDate.formatDate)(element[e.data]) : element[e.data]);
   }));
 };
 

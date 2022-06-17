@@ -44,10 +44,9 @@ const TableContent = () => {
         sortSearchElements: elements.initialElements,
       });
     } else {
-      const sortArray = sortData(e, elements.sortSearchElements, columns);
       setElements({
         ...elements,
-        sortSearchElements: sortArray,
+        sortSearchElements: sortData(e, elements.sortSearchElements, columns),
       });
       setSortActiveIcon({
         dataName: e.target.parentNode.dataset.name,

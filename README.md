@@ -56,7 +56,8 @@ For each column, you must have to specify :
 - data : the name of column
 - title : the label of the column
 - order : the order you want to the column is displayed in the table
-- typeData : the type of the data displayed in the column (very important for the sort)
+- typeData : the type of the data displayed in the column (very important for the sort). Types authorize : string, number or date (date must be written in english format)
+
 
 *Example* :
 

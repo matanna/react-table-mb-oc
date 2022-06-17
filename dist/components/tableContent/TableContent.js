@@ -72,9 +72,8 @@ var TableContent = function TableContent() {
         sortSearchElements: elements.initialElements
       }));
     } else {
-      var sortArray = (0, _sortData.sortData)(e, elements.sortSearchElements, columns);
       setElements((0, _objectSpread2.default)((0, _objectSpread2.default)({}, elements), {}, {
-        sortSearchElements: sortArray
+        sortSearchElements: (0, _sortData.sortData)(e, elements.sortSearchElements, columns)
       }));
       setSortActiveIcon({
         dataName: e.target.parentNode.dataset.name,
