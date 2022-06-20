@@ -4,6 +4,12 @@
   justify-content: space-between;
   padding: 0.8em 0;
 
+  @media screen and (max-width: 576px) {
+    flex-direction: column-reverse;
+    gap: 1em;
+    padding: 1.5em 0;
+  }
+
   .page {
     padding: 0.7em 1em;
     font-weight: 500;

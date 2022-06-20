@@ -82,7 +82,9 @@ var TableContent = function TableContent() {
     }
   };
 
-  return /*#__PURE__*/_react.default.createElement("table", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: _TableContentModule.default.container
+  }, /*#__PURE__*/_react.default.createElement("table", {
     role: "grid",
     className: _TableContentModule.default.table
   }, /*#__PURE__*/_react.default.createElement("thead", {
@@ -124,7 +126,7 @@ var TableContent = function TableContent() {
       element: e,
       oddEven: i % 2 === 0 ? "even" : "odd"
     });
-  })));
+  }))));
 };
 
 var _default = TableContent;

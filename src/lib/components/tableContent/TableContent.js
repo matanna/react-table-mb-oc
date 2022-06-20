@@ -56,52 +56,58 @@ const TableContent = () => {
   };
 
   return (
-    <table role="grid" className={Style.table}>
-      <thead style={style.border ? { borderColor: style.border } : {}}>
-        <tr role="row">
-          {sortColumns.map((e) => (
-            <th key={e.data}>
-              <div className={Style.titleContent}>
-                <span>{e.title}</span>
-                <div className={Style.icon} data-name={e.data}>
-                  <button type="button" onClick={handleClick} data-sort="desc">
-                    <img
-                      src={
-                        sortActiveIcon.dataName === e.data &&
-                        sortActiveIcon.direction === "desc"
-                          ? upArrowActive
-                          : upArrow
-                      }
-                      alt="sort button"
-                    />
-                  </button>
-                  <button type="button" onClick={handleClick} data-sort="asc">
-                    <img
-                      src={
-                        sortActiveIcon.dataName === e.data &&
-                        sortActiveIcon.direction === "asc"
-                          ? downArrowActive
-                          : downArrow
-                      }
-                      alt="sort button"
-                    />
-                  </button>
+    <div className={Style.container}>
+      <table role="grid" className={Style.table}>
+        <thead style={style.border ? { borderColor: style.border } : {}}>
+          <tr role="row">
+            {sortColumns.map((e) => (
+              <th key={e.data}>
+                <div className={Style.titleContent}>
+                  <span>{e.title}</span>
+                  <div className={Style.icon} data-name={e.data}>
+                    <button
+                      type="button"
+                      onClick={handleClick}
+                      data-sort="desc"
+                    >
+                      <img
+                        src={
+                          sortActiveIcon.dataName === e.data &&
+                          sortActiveIcon.direction === "desc"
+                            ? upArrowActive
+                            : upArrow
+                        }
+                        alt="sort button"
+                      />
+                    </button>
+                    <button type="button" onClick={handleClick} data-sort="asc">
+                      <img
+                        src={
+                          sortActiveIcon.dataName === e.data &&
+                          sortActiveIcon.direction === "asc"
+                            ? downArrowActive
+                            : downArrow
+                        }
+                        alt="sort button"
+                      />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </th>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody style={style.border ? { borderColor: style.border } : {}}>
+          {elements.elementsDisplayed.map((e, i) => (
+            <Row
+              key={e.id ? e.id : `element-${i}`}
+              element={e}
+              oddEven={i % 2 === 0 ? "even" : "odd"}
+            />
           ))}
-        </tr>
-      </thead>
-      <tbody style={style.border ? { borderColor: style.border } : {}}>
-        {elements.elementsDisplayed.map((e, i) => (
-          <Row
-            key={e.id ? e.id : `element-${i}`}
-            element={e}
-            oddEven={i % 2 === 0 ? "even" : "odd"}
-          />
-        ))}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   );
 };
 

@@ -1,6 +1,11 @@
+.container {
+  overflow: scroll;
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 1024px;
 
   thead {
     border-bottom: 2px solid black;
@@ -9,9 +14,9 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      padding: 0.8em 0;
+      padding: 0.8em 0.8em 0.8em 0;
       font-weight: 500;
-      gap: 1em;
+      gap: 0.5em;
     }
   }
 
