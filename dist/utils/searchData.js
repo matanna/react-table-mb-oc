@@ -9,6 +9,12 @@ exports.searchData = void 0;
 
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/toConsumableArray"));
 
+/**
+ * It takes an array of objects and a search string, and returns an array of objects that match the search string
+ * @param elements - The array of objects to search through.
+ * @param search - The search term
+ * @returns An array of objects that match the search criteria.
+ */
 var searchData = function searchData(elements, search) {
   // Transform all objects in array of values
   var values = elements.map(function (e) {

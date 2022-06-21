@@ -1,3 +1,9 @@
+/**
+ * It takes an array of objects and a search string, and returns an array of objects that match the search string
+ * @param elements - The array of objects to search through.
+ * @param search - The search term
+ * @returns An array of objects that match the search criteria.
+ */
 export const searchData = (elements, search) => {
   // Transform all objects in array of values
   const values = elements.map((e) =>

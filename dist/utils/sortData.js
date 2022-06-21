@@ -9,8 +9,6 @@ exports.sortData = void 0;
 
 var _toConsumableArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/toConsumableArray"));
 
-var _formatDate = require("./formatDate");
-
 /**
  * We sort the data based on the type of the column we want to sort
  * @param event

@@ -5,11 +5,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.formatDate = void 0;
 
+/**
+ * It takes a date string and returns a formatted date string
+ * @param date - The date to format.
+ * @returns A string that represents the date in the format of "mm/dd/yyyy"
+ */
 var formatDate = function formatDate(date) {
-  if (navigator.language === "fr-FR") {
-    var elements = date.split("-");
-    return "".concat(elements[2], "/").concat(elements[1], "/").concat(elements[0]);
-  }
+  return new Date(date).toLocaleDateString(navigator.language, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit"
+  });
 };
 
 exports.formatDate = formatDate;

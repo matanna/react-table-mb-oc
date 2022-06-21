@@ -1,6 +1,12 @@
+/**
+ * It takes a date string and returns a formatted date string
+ * @param date - The date to format.
+ * @returns A string that represents the date in the format of "mm/dd/yyyy"
+ */
 export const formatDate = (date) => {
-  if (navigator.language === "fr-FR") {
-    const elements = date.split("-");
-    return `${elements[2]}/${elements[1]}/${elements[0]}`;
-  }
+  return new Date(date).toLocaleDateString(navigator.language, {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
 };

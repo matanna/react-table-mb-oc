@@ -5,8 +5,6 @@
  * @param columns - the columns array that we created in the previous step
  * @returns a sorted array.
  */
-import { formatDate } from "./formatDate";
-
 export const sortData = (event, initialArray, columns) => {
   // Get the type of the column we want to sort
   const type =
