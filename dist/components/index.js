@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -45,3 +43,5 @@ var _Pagination = _interopRequireDefault(require("./pagination/Pagination"));
 var _Row = _interopRequireDefault(require("./row/Row"));
 
 var _Search = _interopRequireDefault(require("./search/Search"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

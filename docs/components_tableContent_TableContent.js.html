@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/tableContent/TableContent.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/tableContent/TableContent.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useContext, useState } from "react";
+import Style from "./TableContent.module.scss";
+import { TableContext } from "../../context/TableContext";
+import { Row } from "../index";
+import {
+  downArrow,
+  downArrowActive,
+  upArrow,
+  upArrowActive,
+} from "../../assets";
+import { sortData } from "../../utils/sortData";
+import { isEqual } from "lodash";
+
+/**
+ * It renders the table's content, and it sorts the data when the user clicks on the sort buttons
+ * @returns A table with the columns and rows that the user has chosen.
+ */
+const TableContent = () => {
+  // Sort columns in the order chose by the user
+  const { columns, elements, setElements, style } = useContext(TableContext);
+  const sortColumns = columns.sort((a, b) => a.order - b.order);
+
+  // State for highlighted the good sort icon which is active
+  const [sortActiveIcon, setSortActiveIcon] = useState({
+    dataName: "",
+    direction: "",
+  });
+
+  /**
+   * It takes the event, the array of elements to sort, and the columns to sort by, and returns a sorted array of elements
+   * @param e - the event object
+   */
+  const handleClick = (e) => {
+    // Create sortIcon object for check if the icon is already active (sort is already active)
+    const sortIcon = {
+      dataName: e.target.parentNode.dataset.name,
+      direction: e.target.dataset.sort,
+    };
+    // If is equal, disable sort, if not, active sort
+    if (isEqual(sortIcon, sortActiveIcon)) {
+      setSortActiveIcon({ dataName: "", direction: "" });
+      setElements({
+        ...elements,
+        sortSearchElements: elements.initialElements,
+      });
+    } else {
+      setElements({
+        ...elements,
+        sortSearchElements: sortData(e, elements.sortSearchElements, columns),
+      });
+      setSortActiveIcon({
+        dataName: e.target.parentNode.dataset.name,
+        direction: e.target.dataset.sort,
+      });
+    }
+  };
+
+  return (
+    &lt;div className={Style.container}>
+      &lt;table role="grid" className={Style.table}>
+        &lt;thead style={style.border ? { borderColor: style.border } : {}}>
+          &lt;tr role="row">
+            {sortColumns.map((e) => (
+              &lt;th key={e.data}>
+                &lt;div className={Style.titleContent}>
+                  &lt;span>{e.title}&lt;/span>
+                  &lt;div className={Style.icon} data-name={e.data}>
+                    &lt;button
+                      type="button"
+                      onClick={handleClick}
+                      data-sort="desc"
+                    >
+                      &lt;img
+                        src={
+                          sortActiveIcon.dataName === e.data &amp;&amp;
+                          sortActiveIcon.direction === "desc"
+                            ? upArrowActive
+                            : upArrow
+                        }
+                        alt="sort button"
+                      />
+                    &lt;/button>
+                    &lt;button type="button" onClick={handleClick} data-sort="asc">
+                      &lt;img
+                        src={
+                          sortActiveIcon.dataName === e.data &amp;&amp;
+                          sortActiveIcon.direction === "asc"
+                            ? downArrowActive
+                            : downArrow
+                        }
+                        alt="sort button"
+                      />
+                    &lt;/button>
+                  &lt;/div>
+                &lt;/div>
+              &lt;/th>
+            ))}
+          &lt;/tr>
+        &lt;/thead>
+        &lt;tbody style={style.border ? { borderColor: style.border } : {}}>
+          {elements.elementsDisplayed.map((e, i) => (
+            &lt;Row
+              key={e.id ? e.id : `element-${i}`}
+              element={e}
+              oddEven={i % 2 === 0 ? "even" : "odd"}
+            />
+          ))}
+        &lt;/tbody>
+      &lt;/table>
+    &lt;/div>
+  );
+};
+
+export default TableContent;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#currentPage">currentPage</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#nextPage">nextPage</a></li><li><a href="global.html#NumberOfEntries">NumberOfEntries</a></li><li><a href="global.html#Pagination">Pagination</a></li><li><a href="global.html#prevPage">prevPage</a></li><li><a href="global.html#Row">Row</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#searchData">searchData</a></li><li><a href="global.html#sortData">sortData</a></li><li><a href="global.html#TableContent">TableContent</a></li><li><a href="global.html#TableProvider">TableProvider</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Jun 24 2022 17:01:32 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

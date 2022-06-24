@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>react-table-mb-oc</h1>
+<p>React libraries for create table in a react component.
+This table contains several features :</p>
+<ul>
+<li>sort by columns in terms of its type</li>
+<li>pagination</li>
+<li>search feature</li>
+<li>adapt the style according to the needs</li>
+</ul>
+<hr>
+<h2>Installation</h2>
+<p>You can install react-table-mb-oc with NPM or Yarn</p>
+<p><code>npm install react-table-mb-oc --save</code></p>
+<p>or</p>
+<p><code>yarn add react-table-mb-oc</code></p>
+<h2>Start</h2>
+<p>Import the Table component in your react application</p>
+<p><code>&lt;Table elements={yourElements} columns={columns} style={style} /&gt;</code></p>
+<p><strong>yourElements :</strong> <em>(Required)</em>
+Array of elements you want to display in a table.  Each element must be an object</p>
+<p><em>Example</em> :</p>
+<pre class="prettyprint source"><code>[{
+firstName: &quot;Jhon&quot;,
+lastName: &quot;Doe&quot;,
+dateOfBirth: &quot;1995/10/31&quot;,
+startDate: &quot;2021/06/18&quot;,
+street: &quot;Baker Street&quot;,
+city: &quot;London&quot;,
+state: &quot;buckingam&quot;,
+zipCode: 5486,
+department: &quot;Technical&quot;,
+},
+{
+firstName: &quot;Alice&quot;,
+lastName: &quot;Cooper&quot;,
+dateOfBirth: &quot;1956/05/13&quot;,
+startDate: &quot;2022/08/04&quot;,
+street: &quot;Street in new york&quot;,
+city: &quot;New York&quot;,
+state: &quot;Alabama&quot;,
+zipCode: 5687456,
+department: &quot;Legal&quot;,
+}]
+</code></pre>
+<p><strong>columns :</strong> <em>(Required)</em>
+Array of elements corresponding to columns you want to display in the table.
+Columns name must match with our properties elements</p>
+<p>For each column, you must have to specify :</p>
+<ul>
+<li>data : the name of column</li>
+<li>title : the label of the column</li>
+<li>order : the order you want to the column is displayed in the table</li>
+<li>typeData : the type of the data displayed in the column (very important for the sort). Types authorize : string, number or date (date must be written in english format)</li>
+</ul>
+<p><em>Example</em> :</p>
+<pre class="prettyprint source"><code>[
+  { data: &quot;firstName&quot;, title: &quot;First Name&quot;, order: 1, typeData: &quot;string&quot; },
+  { data: &quot;lastName&quot;, title: &quot;Last Name&quot;, order: 2, typeData: &quot;string&quot; },
+  { data: &quot;dateOfBirth&quot;, title: &quot;Date Of Birth&quot;, order: 5, typeData: &quot;date&quot; },
+  { data: &quot;startDate&quot;, title: &quot;Start Date&quot;, order: 3, typeData: &quot;date&quot; },
+  { data: &quot;street&quot;, title: &quot;Street&quot;, order: 6, typeData: &quot;string&quot; },
+  { data: &quot;city&quot;, title: &quot;City&quot;, order: 7, typeData: &quot;string&quot; },
+  { data: &quot;state&quot;, title: &quot;State&quot;, order: 8, typeData: &quot;string&quot; },
+  { data: &quot;zipCode&quot;, title: &quot;Zip Code&quot;, order: 9, typeData: &quot;number&quot; },
+  { data: &quot;department&quot;, title: &quot;Department&quot;, order: 4, typeData: &quot;string&quot; },
+]
+</code></pre>
+<p><strong>style :</strong> <em>(Facultative)</em>
+Object where you can specify some properties for stylize your table.
+The table had a default style but some properties are editable :</p>
+<ul>
+<li>border : Border top and bottom for the table</li>
+<li>subBorder : Borders of the table rows</li>
+<li>bgOddRow : Background of the odd rows</li>
+<li>bgEvenRow : Background of the even rows</li>
+<li>active : background used on hover and for button, input and select elements</li>
+</ul>
+<p><em>Example</em> :</p>
+<pre class="prettyprint source"><code>{
+  border: &quot;#06ad3d&quot;,
+  subBorder: &quot;#30655e&quot;,
+  bgOddRow: &quot;#61f0e4&quot;,
+  bgEvenRow: &quot;#f4f4ff&quot;,
+  active: &quot;#99AAbb&quot;,
+}
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#currentPage">currentPage</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#items">items</a></li><li><a href="global.html#nextPage">nextPage</a></li><li><a href="global.html#NumberOfEntries">NumberOfEntries</a></li><li><a href="global.html#Pagination">Pagination</a></li><li><a href="global.html#prevPage">prevPage</a></li><li><a href="global.html#Row">Row</a></li><li><a href="global.html#Search">Search</a></li><li><a href="global.html#searchData">searchData</a></li><li><a href="global.html#sortData">sortData</a></li><li><a href="global.html#TableContent">TableContent</a></li><li><a href="global.html#TableProvider">TableProvider</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Jun 24 2022 17:01:32 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

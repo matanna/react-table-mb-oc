@@ -1,7 +1,5 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault").default;
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -37,3 +35,5 @@ var _upArrow = _interopRequireDefault(require("./up-arrow.png"));
 var _upArrowActive = _interopRequireDefault(require("./up-arrow-active.png"));
 
 var _downArrowActive = _interopRequireDefault(require("./down-arrow-active.png"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }

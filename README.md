@@ -1,5 +1,10 @@
 # react-table-mb-oc
-React libraries for create table in a react component
+React libraries for create table in a react component.
+This table contains several features : 
+- sort by columns in terms of its type
+- pagination
+- search feature
+- adapt the style according to the needs
 
 ---
 
